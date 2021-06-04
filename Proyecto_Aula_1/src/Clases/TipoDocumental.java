@@ -33,10 +33,9 @@ public class TipoDocumental {
 
     @Override
     public String toString() {
-        return "TIPO DOCUMENTAL%n" +
-                "------------------------------------------------" +
-                "%ncodigo:" + codigo +
-                "%ndescripcion:" + descripcion +
-                "%n------------------------------------------------" ;
+        return "\nTIPO DOCUMENTAL\n" +
+                "------------------------------------------------\n" +
+                "\n codigo:" + codigo +
+                "\n descripcion:" + descripcion ;
     }
 }

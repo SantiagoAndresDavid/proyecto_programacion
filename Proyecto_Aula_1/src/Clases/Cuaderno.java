@@ -43,11 +43,11 @@ public class Cuaderno {
 
     @Override
     public String toString() {
-        return "CUADERNO%n" +
+        return "\nCUADERNO\n" +
                 "------------------------------------------------" +
-                "%ncodigo:" + codigo +
-                "%nnumeroCuadernos:" + numeroCuadernos +
-                "%ndescripcion:" + descripcion +
-                "%n------------------------------------------------";
+                "\n codigo:" + codigo +
+                "\n numeroCuadernos:" + numeroCuadernos +
+                "\n descripcion:" + descripcion +
+                "\n------------------------------------------------";
     }
 }

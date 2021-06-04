@@ -61,4 +61,16 @@ public class Proceso {
     {
         this.listaDocumentos.add(metaD) ;
     }
+
+
+
+    @Override
+    public String toString() {
+        return "\tProceso\n" +
+                "------------------------------------------------------------------------------------------------------\n"+
+                "metadatosExpediente\n" +
+                "------------------------------------------------------------------------------------------------------\n"
+                + metadatosExpediente
+                ;
+    }
 }

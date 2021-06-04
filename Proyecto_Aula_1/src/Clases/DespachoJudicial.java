@@ -77,13 +77,13 @@ public class DespachoJudicial
 
     @Override
     public String toString() {
-        return "DESPACHO JUDICIAL%n" +
+        return "\nDESPACHO JUDICIAL\n" +
                 "------------------------------------------------" +
-                "%ncodigo:" + codigo +
-                "%nnombre:'" + nombre +
-                "%ndepartamento='" + departamento +
-                "%nciudad:" + ciudad +
-                "%ncategoria:'" + categoria +
-                "%n------------------------------------------------";
+                "\n codigo:" + codigo +
+                "\n nombre:'" + nombre +
+                "\n departamento='" + departamento +
+                "\n ciudad:" + ciudad +
+                "\n categoria:'" + categoria +
+                "\n------------------------------------------------";
     }
 }

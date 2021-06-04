@@ -8,7 +8,6 @@ import java.util.List;
 public class MetaDatoExpediente {
     private int codigo;
     private Departamento departamento;
-    private String ciudad;
     private DespachoJudicial despachoJudicial;
     private Serie serie;
     private Subserie subserie;
@@ -21,10 +20,9 @@ public class MetaDatoExpediente {
     public MetaDatoExpediente() {
     }
 
-    public MetaDatoExpediente(int codigo, Departamento departamento, String ciudad, DespachoJudicial despachoJudicial, Serie serie, Subserie subserie, int numeroRadicacion, String expedienteFisico) {
+    public MetaDatoExpediente(int codigo, Departamento departamento, DespachoJudicial despachoJudicial, Serie serie, Subserie subserie, int numeroRadicacion, String expedienteFisico) {
         this.codigo = codigo;
         this.departamento = departamento;
-        this.ciudad = ciudad;
         this.despachoJudicial = despachoJudicial;
         this.serie = serie;
         this.subserie = subserie;
@@ -53,14 +51,6 @@ public class MetaDatoExpediente {
 
     public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
-    }
-
-    public String getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
     }
 
     public DespachoJudicial getDespachoJudicial() {
@@ -128,4 +118,19 @@ public class MetaDatoExpediente {
         this.listaDemandantes = listaDemandantes;
     }
 
+
+    @Override
+    public String toString() {
+        return "-----------------------------------------------------------------------------------------------------\n" +
+                        "codigo:" + codigo +
+                        "numero de radicacion: " + numeroRadicacion +
+                        departamento +
+                        despachoJudicial +
+                        serie +
+                        subserie +
+                        "\nlista DEMANDADO: " + listaDemandado +
+                        "\nlista DEMANDANTE: " + listaDemandantes +
+                        "\nlista Cuadernos: " + listaCuaderno +
+                        "\nexpediente fisico: " + expedienteFisico;
+    }
 }

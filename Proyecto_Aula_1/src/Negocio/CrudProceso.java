@@ -33,7 +33,7 @@ public class CrudProceso {
             System.out.println("El Objeto a insertar no tiene NOMBRE");
 
         }
-        proceso.agregarDocumento(registrarDatos.llenarDocumento());
+        //proceso.agregarDocumento(registrarDatos.llenarDocumento());
         gestionProceso.getListproc().add(proceso);
     }
 
@@ -44,7 +44,7 @@ public class CrudProceso {
         }
 
 
-        proceso.setMetadatosExpediente(registrarDatos.llenarExpediente());
+        //proceso.setMetadatosExpediente(registrarDatos.llenarExpediente());
         gestionProceso.getListproc().add(proceso);
 
     }

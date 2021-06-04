@@ -50,11 +50,10 @@ public class Subserie
 
     @Override
     public String toString() {
-        return "SUBSERIE%N" +
-                "------------------------------------------------"+
-                "%ncodigo:" + codigo +
-                "%ndescripcion:" + descripcion +
-                "%nlistaTipoDocumental" + listaTipoDocumental +
-                "%n------------------------------------------------";
+        return "\nSUBSERIE\n" +
+                "------------------------------------------------\n"+
+                "\n codigo:" + codigo +
+                "\n descripcion:" + descripcion +
+                "\n listaTipoDocumental" + listaTipoDocumental ;
     }
 }

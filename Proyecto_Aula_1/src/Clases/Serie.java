@@ -51,11 +51,11 @@ public class Serie
 
     @Override
     public String toString() {
-        return "SERIE%n" +
-                "------------------------------------------------"+
-                "%ncodigo:" + codigo +
-                "%ndescripcion:" + descripcion +
-                "%nlistaSubserie:" + listaSubserie +
-                "%n------------------------------------------------";
+        return "\nSERIE\n" +
+                "-------------------------------------------------\n"+
+                "\n codigo:" + codigo +
+                "\n descripcion:" + descripcion +
+                "\n listaSubserie:" + listaSubserie +
+                "\n------------------------------------------------";
     }
 }

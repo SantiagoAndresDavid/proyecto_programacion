@@ -170,4 +170,23 @@ public class MetaDatoDocumento
     {
         this.observacion = observacion;
     }
+
+    @Override
+    public String toString() {
+        return "\nDocumento\n" +
+                "------------------------------------------------------------------------------------------------------"+
+                "\n codigo:" + codigo +
+                "\n nombre:" + nombre +
+                "\n fechaCreada:" + fechaCreada +
+                "\n fechaIncorporada:" + fechaIncorporada +
+                "\n orden:" + orden +
+                "\n numeroPaginas:" + numeroPaginas +
+                "\n pagInicio:" + pagInicio +
+                "\n pagFinal:" + pagFinal +
+                "\n formato:" + formato +
+                "\n tamaño:" + tamaño +
+                "\n origen:" + origen +
+                "\n observacion:" + observacion +
+                "\n-----------------------------------------------------------------------------------------------------\n";
+    }
 }

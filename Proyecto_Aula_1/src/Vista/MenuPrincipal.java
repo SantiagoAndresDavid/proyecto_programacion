@@ -113,15 +113,12 @@ public class MenuPrincipal {
             opcion = escojerOpciones();
             switch (opcion) {
                 case 1:
-                    new RegistrarDatos().llenarDocumento();
+
                     break;
                 case 2:
-                    new RegistrarDatos().llenarExpediente();
-                    break;
-                case 3:
                     ejecutarMenuPrincipal();
                     break;
-                case 4:
+                case 3:
                     break;
                 default:
                     System.out.println("opcion invalida");
@@ -187,8 +184,7 @@ public class MenuPrincipal {
         if (encontrado == null) {
             System.out.println("el documeto no se encuentra");
         } else {
-            imprimirDocumento(encontrado);
-            imprimirExpediente(encontrado);
+
         }
     }
 
@@ -201,8 +197,7 @@ public class MenuPrincipal {
         if (encontrado == null) {
             System.out.println("el documeto no se encuentra");
         } else {
-            imprimirDocumento(encontrado);
-            imprimirExpediente(encontrado);
+
         }
     }
 
@@ -214,8 +209,7 @@ public class MenuPrincipal {
         if (encontrado == null) {
             System.out.println("el documeto no se encuentra");
         } else {
-            imprimirDocumento(encontrado);
-            imprimirExpediente(encontrado);
+
         }
     }
 
@@ -260,9 +254,8 @@ public class MenuPrincipal {
 
     public void imprimirMenuInsertarProcesos() {
         System.out.println("---------------------------- MENU INSERTAR PROCESOS ----------------------------");
-        System.out.println("\t1. Insertar Expediente");
-        System.out.println("\t2. Insertar Documento");
-        System.out.println("\t3. Atras");
+        System.out.println("\t1. Agregar un proceso");
+        System.out.println("\t2. Atras");
         System.out.println("\n0. Salir");
     }
 
@@ -282,38 +275,6 @@ public class MenuPrincipal {
         System.out.println("\t0. salir");
     }
 
-    public void imprimirDocumento(Proceso encontrado) {
-        System.out.println("----------------------------  DOCUMENTO ---------------------------- ");
-        for (MetaDatoDocumento metadatoDocumento : encontrado.getListaDocumentos()) {
-            System.out.println("codigo:" + metadatoDocumento.getCodigo());
-            System.out.println("Nombre:" + metadatoDocumento.getNombre());
-            System.out.println("Fecha creada:" + metadatoDocumento.getFechaCreada());
-            System.out.println("Fecha incorporada:" + metadatoDocumento.getFechaIncorporada());
-            System.out.println("Orden:" + metadatoDocumento.getOrden());
-            System.out.println("Numero de paginas:" + metadatoDocumento.getNumeroPaginas());
-            System.out.println("Pagina de inicio:" + metadatoDocumento.getPagInicio());
-            System.out.println("Pagina final:" + metadatoDocumento.getPagFinal());
-            System.out.println("Formato:" + metadatoDocumento.getFormato());
-            System.out.println("Tamaño:" + metadatoDocumento.getTamaño());
-            System.out.println("Origen:" + metadatoDocumento.getOrigen());
-            System.out.println("Observaciones:" + metadatoDocumento.getObservacion());
-        }
-    }
-
-    public void imprimirExpediente(Proceso encontrado) {
-        System.out.println("----------------------------  EXPEDIENTE  ---------------------------- ");
-        System.out.println("Codigo:" + encontrado.getMetadatosExpediente().getCodigo());
-        System.out.println("Departamento:" + encontrado.getMetadatosExpediente().getDepartamento());
-        System.out.println("Ciudad: " + encontrado.getMetadatosExpediente().getCiudad());
-        System.out.println("Despacho Judicial" + encontrado.getMetadatosExpediente().getDespachoJudicial());
-        System.out.println("serie: " + encontrado.getMetadatosExpediente().getSerie());
-        System.out.println("subSerie:" + encontrado.getMetadatosExpediente().getSubserie());
-        System.out.println("Numero de radicacion:" + encontrado.getMetadatosExpediente().getNumeroRadicacion());
-        System.out.println("Parte Procesal:" + encontrado.getMetadatosExpediente().getListaDemandado());
-        System.out.println("Parte Procesal:" + encontrado.getMetadatosExpediente().getListaDemandantes());
-        System.out.println("Cuadernos" + encontrado.getMetadatosExpediente().getListaCuaderno());
-        System.out.println("Expediente Fisico:" + encontrado.getMetadatosExpediente().getExpedienteFisico());
-    }
 
     public int escojerOpciones() {
         boolean exepcion = true;

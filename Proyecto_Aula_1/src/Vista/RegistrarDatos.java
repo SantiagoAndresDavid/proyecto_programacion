@@ -3,7 +3,6 @@ package Vista;
 import Clases.*;
 
 
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,32 +11,142 @@ import java.util.Scanner;
 
 public class RegistrarDatos {
     private static Scanner scanner = new Scanner(System.in);
-    private final MetaDatoExpediente metaDatoExpediente;
-    private final MetaDatoDocumento metaDatoDocumento;
-    private final Subserie subserie;
-    private final Serie serie;
+    private MetaDatoExpediente metaDatoExpediente;
+    private MetaDatoDocumento metaDatoDocumento;
 
-    public RegistrarDatos() {
-        this.metaDatoExpediente = new MetaDatoExpediente();
-        this.metaDatoDocumento = new MetaDatoDocumento();
-        this.subserie = new Subserie();
-        this.serie = new Serie();
 
+    public MetaDatoExpediente llenarExpediente() {
+        MetaDatoExpediente metaDatoExpediente = new MetaDatoExpediente();
+        Departamento departamento = new Departamento();
+        DespachoJudicial despachoJudicial = new DespachoJudicial();
+        TipoDocumental tipoDocumental = new TipoDocumental();
+        Serie serie = new Serie();
+        Subserie subserie = new Subserie();
+        Cuaderno cuaderno = new Cuaderno();
+        System.out.println("-------------------- LLENAR EXPEDIENTE -------------------- ");
+        System.out.println("ingrese un codigo");
+        metaDatoExpediente.setCodigo(scanner.nextInt());
+        scanner.nextLine();
+        System.out.println("ingrese el radicado");
+        metaDatoExpediente.setNumeroRadicacion(scanner.nextInt());
+        scanner.nextLine();
+        System.out.println("------------------------------------------------------------------------------------------");
+        System.out.println("DEPARTAMENTO");
+        System.out.println("ingrese el departamento");
+        departamento.setNombre(scanner.nextLine());
+        System.out.println("ingrese la ciudad");
+        departamento.setCiudad(scanner.nextLine());
+        metaDatoExpediente.setDepartamento(departamento);
+        System.out.println("-----------------------------------------------------------------------------------------");
+        System.out.println("DESPACHO JUDICIAL");
+        System.out.println("ingrese el nombre del despacho");
+        despachoJudicial.setNombre(scanner.nextLine());
+        System.out.println("ingrese la categoria del despacho");
+        despachoJudicial.setCategoria(scanner.nextLine());
+        System.out.println("ingrese el departamento a la que pertenece el despacho");
+        despachoJudicial.setDepartamento(scanner.nextLine());
+        System.out.println("ingrese la ciudada la que pertenece el depacho");
+        despachoJudicial.setCiudad(scanner.nextLine());
+        metaDatoExpediente.setDespachoJudicial(despachoJudicial);
+        System.out.println("------------------------------------------------------------------------------------------");
+        System.out.println("TIPO DOCUMENTAL");
+        System.out.println("ingrese el codigo de tipo documental");
+        tipoDocumental.setCodigo(scanner.nextInt());
+        scanner.nextLine();
+        System.out.println("ingrese la descripcion del tipo documental ");
+        tipoDocumental.setDescripcion(scanner.nextLine());
+        System.out.println("-------------------------------------------------------------------------------------------");
+        System.out.println("SUB-SERIE");
+        System.out.println("ingrese el codigo");
+        subserie.setCodigo(scanner.nextInt());
+        scanner.nextLine();
+        System.out.println("ingrese la descripcion de la subSerie ");
+        subserie.setDescripcion(scanner.nextLine());
+        subserie.getListaTipoDocumental().add(tipoDocumental);
+        System.out.println("-------------------------------------------------------------------------------------------");
+        System.out.println("SERIE");
+        System.out.println("ingrese el codigo");
+        serie.setCodigo(scanner.nextInt());
+        scanner.nextLine();
+        System.out.println("ingrese la descripcion de la serie ");
+        serie.setDescripcion(scanner.nextLine());
+        serie.getListaSubserie().add(subserie);
+        metaDatoExpediente.setSerie(serie);
+        System.out.println("------------------------------------------------------------------------------------------");
+        System.out.println("PARTE PROCESAL");
+        System.out.println("ingrese cuantos son demandantes");
+        int cantidadDemandante = scanner.nextInt();
+        for (int i = 0; i < cantidadDemandante; i++) {
+            ParteProcesal parteProcesal = new ParteProcesal();
+            System.out.println("-------------------------------------------------------------------------------------");
+            System.out.println("DEMANDANTE N:" + (i+1));
+            System.out.println("ingrese el codigo");
+            parteProcesal.setCodigo(scanner.nextInt());
+            scanner.nextLine();
+            System.out.println("ingrese el nombre");
+            parteProcesal.setNombre(scanner.nextLine());
+            System.out.println("ingrese el tipo de documento");
+            parteProcesal.setTipoDocumento(scanner.nextLine());
+            System.out.println("ingrese el documento");
+            parteProcesal.setDocumento(scanner.nextInt());
+            parteProcesal.setTipoParte("Demandante");
+            metaDatoExpediente.getListaDemandantes().add(parteProcesal);
+            System.out.println("-------------------------------------------------------------------------------------");
+
+        }
+        System.out.println("ingrese cuantos son los demandados");
+        int cantidadDemandado = scanner.nextInt();
+        for (int i = 0; i < cantidadDemandado; i++) {
+            ParteProcesal parteProcesal = new ParteProcesal();
+            System.out.println("-------------------------------------------------------------------------------------");
+            System.out.println("DEMANDADOS N:" + (i+1));
+            System.out.println("ingrese el codigo");
+            parteProcesal.setCodigo(scanner.nextInt());
+            scanner.nextLine();
+            System.out.println("ingrese el nombre");
+            parteProcesal.setNombre(scanner.nextLine());
+            System.out.println("ingrese el tipo de documento");
+            parteProcesal.setTipoDocumento(scanner.nextLine());
+            System.out.println("ingrese el documento");
+            parteProcesal.setDocumento(scanner.nextInt());
+            parteProcesal.setTipoParte("Demandado");
+            metaDatoExpediente.getListaDemandado().add(parteProcesal);
+            System.out.println("-------------------------------------------------------------------------------------");
+        }
+        System.out.println("-----------------------------------------------------------------------------------------");
+        System.out.println("Cuaderno");
+        System.out.println("ingrese la cantidad de cuadernos que tiene el expediente");
+        int cantidadCuadernos = scanner.nextInt();
+        for (int i = 0; i < cantidadCuadernos; i++) {
+            System.out.println("Cuaderno N" + (i + 1));
+            System.out.println("ingrese el codigo del cuaderno");
+            cuaderno.setCodigo(scanner.nextInt());
+            scanner.nextLine();
+            cuaderno.setNumeroCuadernos(i+1);
+            System.out.println("ingrese la descripcion del cuaderno");
+            cuaderno.setDescripcion(scanner.nextLine());
+            metaDatoExpediente.getListaCuaderno().add(cuaderno);
+
+        }
+        System.out.println("¿es un expediente fisico? ");
+        metaDatoExpediente.setExpedienteFisico(scanner.nextLine());
+        return metaDatoExpediente;
     }
 
-
-    public MetaDatoDocumento llenarDocumento() {
+    public MetaDatoDocumento llenarDocumento(){
+        MetaDatoDocumento metaDatoDocumento = new MetaDatoDocumento();
         MetaDatoDocumento dato = new MetaDatoDocumento();
-        System.out.println("-------------------- LLENAR DOCUMENTO -------------------- ");
         System.out.println("ingrese el codigo");
         metaDatoDocumento.setCodigo(scanner.nextInt());
         scanner.nextLine();
         System.out.println("ingrese el nombre");
         metaDatoDocumento.setNombre(scanner.nextLine());
+        System.out.println("ingrese la orden");
+        metaDatoDocumento.setOrden(scanner.nextInt());
         boolean error;
         do {
             try {
-                System.out.println("Fecha de creacion (dia/mes/año) ");
+                System.out.println("Fecha de incorporada (dia/mes/año) ");
                 String creada = scanner.nextLine();
                 metaDatoDocumento.setFechaCreada(new SimpleDateFormat("dd/mm/yyyy").parse(creada));
                 error = false;
@@ -46,6 +155,19 @@ public class RegistrarDatos {
                 error = true;
             }
         } while (error);
+
+        boolean errorA;
+        do {
+            try {
+                System.out.println("Fecha de incorporada (dia/mes/año) ");
+                String creada = scanner.nextLine();
+                metaDatoDocumento.setFechaCreada(new SimpleDateFormat("dd/mm/yyyy").parse(creada));
+                errorA= false;
+            } catch (ParseException ParseException) {
+                System.out.println("Fecha invalida");
+                errorA = true;
+            }
+        } while (errorA);
 
         metaDatoDocumento.setFechaIncorporada(new Date());
         System.out.println("ingrese el numero de paginas ");
@@ -68,131 +190,6 @@ public class RegistrarDatos {
 
         return metaDatoDocumento;
 
-    }
-
-
-    public MetaDatoExpediente llenarExpediente() {
-        System.out.println("-------------------- LLENAR EXPEDIENTE -------------------- ");
-        llenarParteProcesal();
-        llenarCuaderno();
-        llenarDepartamento();
-        llenarDespachoJudical();
-        llenarTipoDocumental();
-        llenarSubserie();
-        llenarSerie();
-
-        return metaDatoExpediente;
-
-    }
-
-
-    public void llenarParteProcesal() {
-
-        ParteProcesal parteProcesal = new ParteProcesal();
-        System.out.println("codigo del Parte ");
-        parteProcesal.setCodigo(scanner.nextInt());
-        scanner.nextLine();
-        System.out.println("ingrese tipo de la parte");
-        parteProcesal.setTipoParte(scanner.nextLine());
-        System.out.println("ingrese el nombre de la parte");
-        parteProcesal.setNombre(scanner.nextLine());
-        System.out.println("ingrese el de documento ");
-        parteProcesal.setDocumento(scanner.nextInt());
-        scanner.nextLine();
-        System.out.println("ingrese el tipo de documento ");
-        parteProcesal.setTipoDocumento(scanner.nextLine());
-        System.out.println("ingrese si es demandante o demandado");
-        String tipoD = scanner.nextLine();
-
-
-        switch (tipoD) {
-            case "Demandante":
-                metaDatoExpediente.getListaDemandantes().add(parteProcesal);
-                break;
-            case "Demandado":
-                metaDatoExpediente.getListaDemandado().add(parteProcesal);
-                break;
-            default:
-                System.out.println(" no ingreso el tipo adecuado");
-        }
-
-    }
-
-    public void llenarCuaderno() {
-        System.out.println("codigo de cuaderno");
-        int codigo = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println("numero del cuaderno");
-        int numCuaderno = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println("descripcion");
-        String descripcion = scanner.nextLine();
-        metaDatoExpediente.agregarCuaderno(codigo, numCuaderno, descripcion);
-
-    }
-
-    public void llenarDepartamento() {
-        System.out.println("codigo del departamento ");
-        int codigo = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println("ingrese el nombre del departamento");
-        String nombre = scanner.nextLine();
-        System.out.println("ingrese el nombre de la ciudad");
-        String ciudad = scanner.nextLine();
-
-        Departamento departamento = new Departamento(codigo, nombre, ciudad);
-        metaDatoExpediente.setDepartamento(departamento);
-    }
-
-    public void llenarDespachoJudical() {
-        System.out.println("ingrese el codigo del despacho ");
-        int codigo = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println("ingresar el nombre del despacho");
-        String nombre = scanner.nextLine();
-        System.out.println("ingresar departamento");
-        String departamento = scanner.nextLine();
-        System.out.println("ingresar ciudad");
-        String ciudad = scanner.nextLine();
-        System.out.println("ingrese la categoria");
-        String categoria = scanner.nextLine();
-
-        DespachoJudicial despachoJudicial = new DespachoJudicial(codigo, nombre, departamento, ciudad, categoria);
-        metaDatoExpediente.setDespachoJudicial(despachoJudicial);
-
-    }
-
-    public void llenarTipoDocumental() {
-        System.out.println("ingrese el codigo del tipo documental");
-        int codigo = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println("ingrese la descripcion");
-        String descripcion = scanner.nextLine();
-
-        TipoDocumental tipoDocumental = new TipoDocumental(codigo, descripcion);
-        subserie.agregarTipoDocumental(tipoDocumental);
-
-    }
-
-    public void llenarSubserie() {
-        System.out.println("ingrese el codigo de la sub Serie");
-        int codigo = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println("ingrese la descripcion");
-        String descripcion = scanner.nextLine();
-
-        Subserie subserie = new Subserie(codigo, descripcion);
-
-    }
-
-    public void llenarSerie() {
-        System.out.println("ingrese el codigo de la serie");
-        int codigo = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println("ingrese la descripcion");
-        String descripcion = scanner.nextLine();
-
-        Serie serie = new Serie(codigo, descripcion);
     }
 
 

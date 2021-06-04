@@ -50,11 +50,11 @@ public class Departamento {
 
     @Override
     public String toString() {
-        return "DEPARTAMENTO%n" +
+        return "\nDEPARTAMENTO\n" +
                 "------------------------------------------------" +
-                "%ncodigo:" + codigo +
-                "%nnombre:" + nombre +
-                "%nciudad:" + ciudad +
-                "%n------------------------------------------------";
+                "\n codigo:" + codigo +
+                "\n nombre:" + nombre +
+                "\n ciudad:" + ciudad +
+                "\n------------------------------------------------";
     }
 }

@@ -82,13 +82,12 @@ public class ParteProcesal
 
     @Override
     public String toString() {
-        return "PARTE PORCECAL%n" +
-                "------------------------------------------------"+
-                "codigo" + codigo +
-                "tipoParte:" + tipoParte +
-                "nombre:" + nombre +
-                "documento:" + documento +
-                "tipoDocumento:" + tipoDocumento +
-                "%n------------------------------------------------";
+        return "\n------------------------------------------------\n"+
+                "\n codigo:" + codigo +
+                "\n tipoParte:" + tipoParte +
+                "\n nombre:" + nombre +
+                "\n documento:" + documento +
+                "\n tipoDocumento:" + tipoDocumento +
+                "\n------------------------------------------------";
     }
 }
