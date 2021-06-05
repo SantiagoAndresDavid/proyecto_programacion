@@ -2,62 +2,57 @@
 package Datos;
 
 import Clases.MetaDatoDocumento;
-import Clases.MetaDatoExpediente;
+import Clases.ParteProcesal;
 import Clases.Proceso;
-import Datos.IGestionDatos;
 import Excepciones.ExcepcionAccesoDatos;
+import Negocio.CrudProceso;
+import Vista.RegistrarDatos;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GestionProceso implements IGestionDatos<Proceso, Integer> {
+
+public class GestionProceso implements IGestionProceso {
     private List<Proceso> listaProcesos;
-
-    public List<Proceso> getListproc() {
-        return listaProcesos;
-    }
-
-    public void setListproc(List<Proceso> listaProcesos) {
-        this.listaProcesos = listaProcesos;
-    }
 
     public GestionProceso() {
         this.listaProcesos = new ArrayList<>();
     }
 
-    @Override
-    public void insertar(Proceso proceso) throws ExcepcionAccesoDatos {
-        if (proceso == null) {
-            throw new ExcepcionAccesoDatos("El objeto a insertar es de tipo NULL");
-        }
-        if (proceso.getMetadatosExpediente().getCodigo() == 0) {
-            throw new ExcepcionAccesoDatos("El Objeto a insertar no tiene CODIGO");
-        }
-        listaProcesos.add(proceso);
-    }
-
-    @Override
-    public void eliminar(Integer codigo) throws ExcepcionAccesoDatos {
-        Proceso encontrado = buscar(codigo);
-        if (encontrado == null) {
-            throw new ExcepcionAccesoDatos("El objeto a eliminar es de tipo NULL");
-        }
-        listaProcesos.remove(encontrado);
-    }
-
-    public List<Proceso> leer() throws ExcepcionAccesoDatos {
+    public List<Proceso> getListaProcesos() {
         return listaProcesos;
     }
 
-    @Override
-    public Proceso buscar(Integer codigo) throws ExcepcionAccesoDatos {
-        if (codigo == null)
-            throw new ExcepcionAccesoDatos("El objeto a buscar es de tipo NULL");
+    public void setListaProcesos(List<Proceso> listaProcesos) {
+        this.listaProcesos = listaProcesos;
+    }
 
-        for (Proceso prc : listaProcesos) {
-            for (MetaDatoDocumento documento : prc.getListaDocumentos()) {
-                if (documento.getCodigo() == codigo) {
-                    return prc;
+    @Override
+    public void insertarProcesos() {
+        Proceso proceso = new Proceso();
+        RegistrarDatos registrarDatos = new RegistrarDatos();
+        proceso.setMetadatosExpediente(registrarDatos.llenarExpediente());
+        proceso.getListaDocumentos().add(registrarDatos.llenarDocumento());
+        listaProcesos.add(proceso);
+    }
+
+   @Override
+    public Proceso buscarPorRadicado(int radicado) {
+        for (Proceso proceso : listaProcesos) {
+            if (proceso.getMetadatosExpediente().getNumeroRadicacion() == radicado) {
+                return proceso;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Proceso buscarPorDemandado(String nombre) {
+        for (Proceso proceso : listaProcesos) {
+            for (ParteProcesal parteProcesal : proceso.getMetadatosExpediente().getListaDemandado()) {
+                if (parteProcesal.getNombre().equals(nombre)) {
+                    return proceso;
                 }
             }
         }
@@ -65,12 +60,30 @@ public class GestionProceso implements IGestionDatos<Proceso, Integer> {
     }
 
     @Override
-    public void actualizar(Integer codigo, Proceso nuevo) throws ExcepcionAccesoDatos {
-        Proceso encontrado = buscar(codigo);
-        if (encontrado == null) {
-            throw new ExcepcionAccesoDatos("El objeto a actualizar es de tipo NULL");
+    public Proceso buscarPorDemandante(String nombre) {
+        for (Proceso proceso : listaProcesos) {
+            for (ParteProcesal parteProcesal : proceso.getMetadatosExpediente().getListaDemandantes()) {
+                if (parteProcesal.getNombre().equals(nombre)) {
+                    return proceso;
+                }
+            }
         }
-        encontrado.setMetadatosExpediente(nuevo.getMetadatosExpediente());
-        encontrado.setListaDocumentos(nuevo.getListaDocumentos());
+        return null;
     }
+
+    @Override
+    public void eliminarDocumento(int codigo) {
+        for (Proceso proceso : listaProcesos) {
+            List<MetaDatoDocumento> listaDocumentos = proceso.getListaDocumentos();
+            for (MetaDatoDocumento documento : listaDocumentos) {
+                if (documento.getCodigo() == codigo) {
+                    listaDocumentos.remove(documento);
+                    System.out.println("el documento fue borrado exitosamente");
+                    return;
+                }
+            }
+        }
+    }
+
+
 }

@@ -25,7 +25,7 @@ public class InicioSesion {
 
     public void ejecutarInicio() {
         int opcion;
-        imprimirMenu();
+        new ImprimirMenus().imprimirMenu();
         opcion = escojerOpciones();
         switch (opcion) {
             case 1:
@@ -48,13 +48,7 @@ public class InicioSesion {
         }
     }
 
-    public void imprimirMenu() {
-        System.out.println("---------------------------- INICIO DE SESION ----------------------------");
-        System.out.println("\t1. Iniciar Sesion");
-        System.out.println("\t2. Registrar Usuario");
-        System.out.println("\t3. ingresar como invitado");
 
-    }
 
     public void iniciarSesion() {
         String user;
@@ -94,12 +88,7 @@ public class InicioSesion {
             default:
                 System.out.println("el tipo de usuario no concuerda");
         }
-
-        try {
-            gestionUsuario.insertar(usuario);
-        } catch (ExcepcionAccesoDatos excepcionAccesoDatos) {
-            excepcionAccesoDatos.getMessage();
-        }
+        gestionUsuario.insertar(usuario);
     }
 
     public void ingresarInvitado() {

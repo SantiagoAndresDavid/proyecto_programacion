@@ -121,16 +121,15 @@ public class MetaDatoExpediente {
 
     @Override
     public String toString() {
-        return "-----------------------------------------------------------------------------------------------------\n" +
-                        "codigo:" + codigo +
-                        "numero de radicacion: " + numeroRadicacion +
-                        departamento +
-                        despachoJudicial +
-                        serie +
-                        subserie +
-                        "\nlista DEMANDADO: " + listaDemandado +
-                        "\nlista DEMANDANTE: " + listaDemandantes +
-                        "\nlista Cuadernos: " + listaCuaderno +
-                        "\nexpediente fisico: " + expedienteFisico;
+        return  "codigo:" + codigo +
+                "\n numero de radicacion: " + numeroRadicacion +
+                departamento +
+                despachoJudicial +
+                serie +
+                subserie +
+                "\nlista DEMANDADO: " + listaDemandado +
+                "\nlista DEMANDANTE: " + listaDemandantes +
+                "\nlista Cuadernos: " + listaCuaderno +
+                "\nexpediente fisico: " + expedienteFisico;
     }
 }

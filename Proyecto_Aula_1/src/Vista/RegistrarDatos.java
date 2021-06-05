@@ -113,6 +113,7 @@ public class RegistrarDatos {
             metaDatoExpediente.getListaDemandado().add(parteProcesal);
             System.out.println("-------------------------------------------------------------------------------------");
         }
+
         System.out.println("-----------------------------------------------------------------------------------------");
         System.out.println("Cuaderno");
         System.out.println("ingrese la cantidad de cuadernos que tiene el expediente");
@@ -143,31 +144,32 @@ public class RegistrarDatos {
         metaDatoDocumento.setNombre(scanner.nextLine());
         System.out.println("ingrese la orden");
         metaDatoDocumento.setOrden(scanner.nextInt());
-        boolean error;
+        scanner.nextLine();
+        boolean A;
         do {
             try {
-                System.out.println("Fecha de incorporada (dia/mes/año) ");
+                System.out.println("Fecha de Creada (dia/mes/año) ");
                 String creada = scanner.nextLine();
                 metaDatoDocumento.setFechaCreada(new SimpleDateFormat("dd/mm/yyyy").parse(creada));
-                error = false;
+                A = false;
             } catch (ParseException ParseException) {
                 System.out.println("Fecha invalida");
-                error = true;
+                A = true;
             }
-        } while (error);
+        } while (A);
 
-        boolean errorA;
+        boolean B;
         do {
             try {
                 System.out.println("Fecha de incorporada (dia/mes/año) ");
                 String creada = scanner.nextLine();
-                metaDatoDocumento.setFechaCreada(new SimpleDateFormat("dd/mm/yyyy").parse(creada));
-                errorA= false;
+                metaDatoDocumento.setFechaIncorporada(new SimpleDateFormat("dd/mm/yyyy").parse(creada));
+                B= false;
             } catch (ParseException ParseException) {
                 System.out.println("Fecha invalida");
-                errorA = true;
+                B = true;
             }
-        } while (errorA);
+        } while (B);
 
         metaDatoDocumento.setFechaIncorporada(new Date());
         System.out.println("ingrese el numero de paginas ");
