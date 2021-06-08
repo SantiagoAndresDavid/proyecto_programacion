@@ -10,7 +10,7 @@ public interface IGestionProceso {
      Proceso buscarPorDemandante(String nombre);
      Proceso buscarPorDemandado(String nombre);
      void eliminarDocumento(int codigo);
-
+     void eliminarProceso(int codigo);
 
 
 

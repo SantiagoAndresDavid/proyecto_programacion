@@ -55,7 +55,6 @@ public class Serie
                 "-------------------------------------------------\n"+
                 "\n codigo:" + codigo +
                 "\n descripcion:" + descripcion +
-                "\n listaSubserie:" + listaSubserie +
-                "\n------------------------------------------------";
+                "\n listaSubserie:" + listaSubserie;
     }
 }

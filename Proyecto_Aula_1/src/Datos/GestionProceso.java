@@ -7,6 +7,7 @@ import Clases.Proceso;
 import Excepciones.ExcepcionAccesoDatos;
 import Negocio.CrudProceso;
 import Vista.RegistrarDatos;
+import Vista.VistaCrud;
 
 
 import java.util.ArrayList;
@@ -31,13 +32,18 @@ public class GestionProceso implements IGestionProceso {
     @Override
     public void insertarProcesos() {
         Proceso proceso = new Proceso();
+        VistaCrud vistaCrud = new VistaCrud();
         RegistrarDatos registrarDatos = new RegistrarDatos();
         proceso.setMetadatosExpediente(registrarDatos.llenarExpediente());
-        proceso.getListaDocumentos().add(registrarDatos.llenarDocumento());
+        int numeroProcesos = vistaCrud.numeroDocumentos();
+        for (int i = 0; i < numeroProcesos ; i++) {
+            proceso.getListaDocumentos().add(registrarDatos.llenarDocumento());
+        }
+
         listaProcesos.add(proceso);
     }
 
-   @Override
+    @Override
     public Proceso buscarPorRadicado(int radicado) {
         for (Proceso proceso : listaProcesos) {
             if (proceso.getMetadatosExpediente().getNumeroRadicacion() == radicado) {
@@ -78,9 +84,18 @@ public class GestionProceso implements IGestionProceso {
             for (MetaDatoDocumento documento : listaDocumentos) {
                 if (documento.getCodigo() == codigo) {
                     listaDocumentos.remove(documento);
-                    System.out.println("el documento fue borrado exitosamente");
                     return;
                 }
+            }
+        }
+    }
+
+    @Override
+    public void eliminarProceso(int radicado) {
+        for (Proceso proceso : listaProcesos) {
+          if(proceso.getMetadatosExpediente().getNumeroRadicacion() == radicado){
+                listaProcesos.remove(proceso);
+                return;
             }
         }
     }

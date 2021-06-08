@@ -30,6 +30,20 @@ public class GestionUsuario implements IGestionUsuario {
         listUsuario.add(dato);
     }
 
+    public void eliminar(String dato){
+        for (Usuario usuario:listUsuario) {
+            if (usuario.getNombre().equals(dato)){
+                listUsuario.remove(usuario);
+            }
+        }
+    }
 
-
+    public Usuario buscar(String dato){
+        for (Usuario usuario: listUsuario) {
+            if (usuario.getNombre().equals(dato)){
+                return usuario;
+            }
+        }
+        return null;
+    }
 }

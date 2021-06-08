@@ -43,8 +43,7 @@ public class Cuaderno {
 
     @Override
     public String toString() {
-        return "\nCUADERNO\n" +
-                "------------------------------------------------" +
+        return "\n ------------------------------------------------" +
                 "\n codigo:" + codigo +
                 "\n numeroCuadernos:" + numeroCuadernos +
                 "\n descripcion:" + descripcion +

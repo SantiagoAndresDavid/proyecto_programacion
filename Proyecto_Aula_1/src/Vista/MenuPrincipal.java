@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class MenuPrincipal {
     private static Scanner scanner = new Scanner(System.in);
     private  Usuario usuario;
-
+    CrudProceso crudProceso = new CrudProceso();
     public MenuPrincipal() {
     }
 
@@ -116,12 +116,12 @@ public class MenuPrincipal {
             opcion = escojerOpciones();
             switch (opcion) {
                 case 1:
-
+                    crudProceso.insertarProceso();
                     break;
                 case 2:
                     ejecutarMenuPrincipal();
                     break;
-                case 3:
+                case 0:
                     break;
                 default:
                     System.out.println("opcion invalida");
@@ -131,24 +131,25 @@ public class MenuPrincipal {
 
     public void ejecutarConsulta() {
         ImprimirMenus imprimirMenus = new ImprimirMenus();
+        VistaCrud vistaCrud = new VistaCrud();
         int opcion;
         do {
             imprimirMenus.imprimirMenuPanelConsulta();
             opcion = escojerOpciones();
             switch (opcion) {
                 case 1:
-
+                    int pedirRadicado = vistaCrud.pediRadicado();
+                    vistaCrud.imprmirProceso(crudProceso.buscarPorRadicado(pedirRadicado));
                     break;
                 case 2:
-
+                    String demandante = vistaCrud.pedirNombre();
+                    vistaCrud.imprmirProceso(crudProceso.buscarPorDemandante(demandante));
                     break;
                 case 3:
-
+                    String demandado = vistaCrud.pedirNombre();
+                    vistaCrud.imprmirProceso(crudProceso.buscarPorDemandado(demandado));
                     break;
                 case 4:
-
-                    break;
-                case 5:
                     ejecutarMenuPrincipal();
                     break;
                 case 0:
@@ -161,18 +162,24 @@ public class MenuPrincipal {
 
     public void ejecutarPanelDeAdministrador() {
         ImprimirMenus imprimirMenus = new ImprimirMenus();
+        VistaCrud vistaCrud = new VistaCrud();
         int opcion;
         do {
             imprimirMenus.imprimirMenuPanelAdministracion();
             opcion = escojerOpciones();
             switch (opcion) {
                 case 1:
-
+                    int codigo = vistaCrud.pedirCodigoCuaderno();
+                    crudProceso.eliminarProceso(codigo);
                     break;
                 case 2:
-
+                    int radicado = vistaCrud.pediRadicado();
+                    crudProceso.eliminarProceso(radicado);
                     break;
                 case 3:
+
+                    break;
+                case 4:
                     ejecutarMenuPrincipal();
                     break;
                 case 0:

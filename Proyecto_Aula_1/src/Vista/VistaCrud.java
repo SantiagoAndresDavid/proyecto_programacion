@@ -85,5 +85,30 @@ public class VistaCrud {
         }
     }
 
+    public int numeroDocumentos(){
+        System.out.println("Ingrese Cuantos Documentos Desea ingresar");
+        int pedirNumero = scanner.nextInt();
+        scanner.nextLine();
+        return pedirNumero;
+    }
 
+    public int pediRadicado(){
+        System.out.println("ingrese el radicado del Expediente que desea buscar");
+        int pedirNumero = scanner.nextInt();
+        scanner.nextLine();
+        return pedirNumero;
+    }
+
+    public String pedirNombre(){
+        System.out.println("ingrese el Nombre del demandante o demando que desea buscar");
+        String pedirNumero = scanner.nextLine();
+        return pedirNumero;
+    }
+
+    public int pedirCodigoCuaderno(){
+        System.out.println("Ingrese el codigo del cuaderno");
+        int codigo = scanner.nextInt();
+        scanner.nextLine();
+        return codigo;
+    }
 }

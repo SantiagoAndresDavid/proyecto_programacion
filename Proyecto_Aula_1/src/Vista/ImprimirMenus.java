@@ -37,11 +37,10 @@ public class ImprimirMenus {
 
     public void imprimirMenuPanelConsulta() {
         System.out.println("---------------------------- MENU DE CONSULTA ----------------------------");
-        System.out.println("\t1. consultar por radicado");
-        System.out.println("\t2. consultar por demandante");
-        System.out.println("\t3. consultar por demandado");
-        System.out.println("\t4. imprimir esa caga ");
-        System.out.println("\t5. atras");
+        System.out.println("\n1. consultar por radicado");
+        System.out.println("\n2. consultar por demandante");
+        System.out.println("\n3. consultar por demandado");
+        System.out.println("\n4. atras");
         System.out.println("\n0. Salir");
     }
 
@@ -63,9 +62,10 @@ public class ImprimirMenus {
 
     public void imprimirMenuPanelAdministracion() {
         System.out.println("---------------------------- MENU PANEL DE CONTROL ----------------------------");
-        System.out.println("\t1. eliminar documento");
-        System.out.println("\t2. modificar documento");
-        System.out.println("\t3. atras");
+        System.out.println("\t1. eliminar procesos");
+        System.out.println("\t2. eliminar documento");
+        System.out.println("\t3. modificar procesos");
+        System.out.println("\t4. atras");
         System.out.println("\t0. salir");
     }
 

@@ -18,24 +18,35 @@ public class CrudProceso {
         return instance;
     }
 
-    private CrudProceso() {
+
+
+    public CrudProceso() {
         this.gestionProceso = new GestionProceso();
         this.datos = new GestionProceso();
     }
 
-   /* public Proceso registarProceso(){
-        Proceso proceso = new Proceso();
-        RegistrarDatos registrarDatos = new RegistrarDatos();
-        proceso.setMetadatosExpediente(registrarDatos.llenarExpediente());
-        proceso.getListaDocumentos().add(registrarDatos.llenarDocumento());
-        return proceso;
-    }*/
+    public void insertarProceso(){
+        datos.insertarProcesos();
+    }
 
-    public Proceso BuscarPorRadicado(int radicado){
+    public Proceso buscarPorRadicado(int radicado){
         return datos.buscarPorRadicado(radicado);
     }
 
+    public Proceso buscarPorDemandante(String nombre){
+        return datos.buscarPorDemandante(nombre);
+    }
 
+    public Proceso buscarPorDemandado(String nombre){
+        return datos.buscarPorDemandado(nombre);
+    }
 
+    public void elimiarDocumento(int codigo){
+        datos.eliminarDocumento(codigo);
+    }
+
+    public void eliminarProceso(int radicado){
+        datos.eliminarProceso(radicado);
+    }
 }
 
